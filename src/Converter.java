@@ -44,13 +44,15 @@ public class Converter {
 		case 4:
 			thousands(n / 1000);
 			hundreds(thirdVal);
-			if (((n % 100)/10) == 1) {
+			if (((n % 100) / 10) == 1) {
 				teens(n % 10);
 			} else {
 				tens(secondVal);
 				ones(n - (unit * 10));
 			}
 			break;
+		default:
+			System.out.println("Input must be between 1 and 9999");
 		}
 	}
 
