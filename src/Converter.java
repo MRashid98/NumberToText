@@ -4,10 +4,10 @@ public class Converter {
 	private String ans = "";
 
 	public void printAnswer(int n) {
-		
+
 		breakDownNumber(n);
 		System.out.println(ans);
-		
+
 	}
 
 	private void breakDownNumber(int n) {
@@ -35,7 +35,7 @@ public class Converter {
 
 			hundreds(n / 100);
 			if (secondVal == 1) {
-				teens(secondVal);
+				teens(n % 10);
 			} else {
 				tens(secondVal);
 				ones(n - (unit * 10));
@@ -44,8 +44,8 @@ public class Converter {
 		case 4:
 			thousands(n / 1000);
 			hundreds(thirdVal);
-			if (n / 10 == 1) {
-				teens(secondVal);
+			if (((n % 100)/10) == 1) {
+				teens(n % 10);
 			} else {
 				tens(secondVal);
 				ones(n - (unit * 10));
@@ -144,10 +144,10 @@ public class Converter {
 	}
 
 	private void hundreds(int n) {
-		
+
 		ones(n);
-		ans +=" hundred and ";
-		
+		ans += " hundred and ";
+
 	}
 
 	private void thousands(int n) {
