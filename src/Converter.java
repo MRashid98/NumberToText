@@ -4,8 +4,10 @@ public class Converter {
 	private String ans = "";
 
 	public void printAnswer(int n) {
+		
 		breakDownNumber(n);
 		System.out.println(ans);
+		
 	}
 
 	private void breakDownNumber(int n) {
@@ -23,7 +25,7 @@ public class Converter {
 			break;
 		case 2:
 			if (n / 10 == 1) {
-				teens(n);
+				teens(n % 10);
 			} else {
 				tens(unit);
 				ones(n - (unit * 10));
@@ -52,7 +54,7 @@ public class Converter {
 		}
 	}
 
-	private String ones(int n) {
+	private void ones(int n) {
 
 		switch (n) {
 		case 1:
@@ -84,7 +86,6 @@ public class Converter {
 			break;
 		}
 
-		return ans;
 	}
 
 	private void teens(int n) {
@@ -105,8 +106,8 @@ public class Converter {
 			ans += "fifteen";
 			break;
 		default:
-			ans += ones(n) + "teen";
-			break;
+			ones(n);
+			ans += "teen";
 		}
 	}
 
@@ -143,11 +144,14 @@ public class Converter {
 	}
 
 	private void hundreds(int n) {
-		ans = ones(n) + " hundred ";
-		ans += "and ";
+		
+		ones(n);
+		ans +=" hundred and ";
+		
 	}
 
 	private void thousands(int n) {
-		ans = ones(n) + " thousand ";
+		ones(n);
+		ans += " thousand ";
 	}
 }
