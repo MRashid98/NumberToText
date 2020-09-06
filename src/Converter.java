@@ -28,27 +28,32 @@ public class Converter {
 				teens(n % 10);
 			} else {
 				tens(unit);
-				ones(n - (unit * 10));
+				ones(n % 10);
 			}
 			break;
 		case 3:
 
 			hundreds(n / 100);
+			if (n % 100 != 0) {
+				ans += "and\s";
+			}
 			if (secondVal == 1) {
 				teens(n % 10);
 			} else {
 				tens(secondVal);
-				ones(n - (unit * 10));
+				ones(n % 10);
 			}
 			break;
 		case 4:
 			thousands(n / 1000);
 			hundreds(thirdVal);
+			ans += "and\s";
 			if (((n % 100) / 10) == 1) {
 				teens(n % 10);
 			} else {
 				tens(secondVal);
-				ones(n - (unit * 10));
+				
+				ones(n % 10);
 			}
 			break;
 		default:
@@ -142,18 +147,18 @@ public class Converter {
 			ans += "ninety";
 			break;
 		}
-		ans += " ";
+		ans += "\s";
+
 	}
 
 	private void hundreds(int n) {
 
 		ones(n);
-		ans += " hundred and ";
-
+		ans += "\shundred\s";
 	}
 
 	private void thousands(int n) {
 		ones(n);
-		ans += " thousand ";
+		ans += "\sthousand\s";
 	}
 }
